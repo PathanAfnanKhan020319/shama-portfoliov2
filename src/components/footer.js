@@ -1024,8 +1024,8 @@ const Footer = () => {
                   tracking-[-0.04em]
                 "
               >
-                Syeda Shamama
-                Afeef
+                Pathan Afnan
+                Khan
               </span>
             </span>
 
