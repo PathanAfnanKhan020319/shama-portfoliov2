@@ -1,0 +1,75 @@
+name: Integrate global opportunity signals
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/integrate-global-signals.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  integrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Patch About page
+        shell: bash
+        run: |
+          python <<'PY'
+          from pathlib import Path
+
+          path = Path('src/pages/about.js')
+          text = path.read_text(encoding='utf-8')
+
+          old_import = 'const Education = dynamic(() => import("@/components/Education"), { ssr: false });\n'
+          new_import = old_import + 'const GlobalSignals = dynamic(() => import("@/components/GlobalSignals"), { ssr: false });\n'
+          if 'GlobalSignals' not in text:
+              if old_import not in text:
+                  raise SystemExit('Education dynamic import anchor not found')
+              text = text.replace(old_import, new_import, 1)
+
+          old_block = '''          <DeferredSection
+            rootMargin="700px 0px"
+            minHeight={700}
+          >
+            <Education />
+          </DeferredSection>'''
+
+          new_block = '''          <DeferredSection
+            rootMargin="900px 0px"
+            minHeight={1500}
+          >
+            <GlobalSignals />
+          </DeferredSection>
+
+          <DeferredSection
+            rootMargin="700px 0px"
+            minHeight={700}
+          >
+            <Education />
+          </DeferredSection>'''
+
+          if '<GlobalSignals />' not in text:
+              if old_block not in text:
+                  raise SystemExit('Education section anchor not found')
+              text = text.replace(old_block, new_block, 1)
+
+          path.write_text(text, encoding='utf-8')
+          print('GlobalSignals integrated into About page.')
+          PY
+
+      - name: Commit and push
+        shell: bash
+        run: |
+          git config user.name "portfolio-update-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/pages/about.js
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "feat: showcase global opportunities and certifications"
+            git push origin main
+          fi
