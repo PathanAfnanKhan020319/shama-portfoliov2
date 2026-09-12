@@ -72,13 +72,13 @@ export default function RecruiterLauncher() {
             >
               <div className="flex items-center gap-2 text-[8px] font-black uppercase tracking-[0.18em] opacity-40">
                 <span className="h-1.5 w-1.5 rounded-full bg-current" />
-                Hiring in AI / ML?
+                Hiring AI / ML?
               </div>
               <p className="mt-2 text-sm font-black leading-5 tracking-[-0.02em]">
-                See Afnan&apos;s fit in 60 seconds.
+                See why Afnan stands out.
               </p>
               <p className="mt-1 text-[10px] leading-4 opacity-50">
-                Pick your role and get a role-aware evidence snapshot.
+                Role-aware proof in 60 seconds.
               </p>
             </motion.div>
           )}
@@ -108,8 +108,8 @@ export default function RecruiterLauncher() {
             whileHover={reducedMotion ? undefined : { y: -3, scale: 1.025 }}
             whileTap={{ scale: 0.97 }}
             className="group flex items-center gap-3 rounded-full border border-dark/15 bg-dark px-4 py-3 text-light shadow-[0_18px_55px_rgba(0,0,0,0.2)] transition-shadow hover:shadow-[0_24px_70px_rgba(0,0,0,0.28)] dark:border-light/20 dark:bg-light dark:text-dark md:px-4 md:py-3"
-            aria-label="Open 60-second recruiter brief"
-            title="Recruiter View — Shift + R"
+            aria-label="Open Why Afnan Stands Out recruiter brief"
+            title="Why Afnan Stands Out — Shift + R"
           >
             <span className="relative flex h-7 w-7 items-center justify-center rounded-full border border-current/20">
               <motion.span
@@ -123,8 +123,11 @@ export default function RecruiterLauncher() {
               <span className="block text-[7px] font-black uppercase tracking-[0.2em] opacity-45">
                 Hiring AI / ML?
               </span>
-              <span className="mt-0.5 block text-[10px] font-black uppercase tracking-[0.12em]">
-                60s Recruiter View
+              <span className="mt-0.5 block text-[10px] font-black uppercase tracking-[0.1em]">
+                Why Afnan Stands Out
+              </span>
+              <span className="mt-0.5 block text-[7px] font-bold uppercase tracking-[0.16em] opacity-45">
+                60-second recruiter view
               </span>
             </span>
 
