@@ -1,6 +1,7 @@
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/footer";
 import RecruiterMode from "@/components/RecruiterMode";
+import RecruiterLauncher from "@/components/RecruiterLauncher";
 import "@/styles/globals.css";
 import { Montserrat } from "next/font/google";
 import Head from "next/head";
@@ -56,6 +57,7 @@ export default function App({ Component, pageProps }) {
         <Component {...pageProps} />
         <Footer />
         <RecruiterMode />
+        <RecruiterLauncher />
       </main>
     </>
   );
