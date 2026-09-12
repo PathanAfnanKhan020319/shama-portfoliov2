@@ -2109,7 +2109,7 @@ const About = () => {
               />
 
               <StatCard
-                value={3.5}
+                value={4}
                 suffix="+"
                 label="Years Experience"
                 sublabel="Applied AI Engineering"
