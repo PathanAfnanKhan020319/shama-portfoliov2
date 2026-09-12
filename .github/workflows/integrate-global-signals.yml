@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Patch About page
+      - name: Move GlobalSignals below About hero
         shell: bash
         run: |
           python <<'PY'
@@ -25,44 +25,35 @@ jobs:
           path = Path('src/pages/about.js')
           text = path.read_text(encoding='utf-8')
 
-          if 'const GlobalSignals = dynamic(' not in text:
-              anchor = 'const Education = dynamic(() => import("@/components/Education"), { ssr: false });'
-              if anchor not in text:
-                  raise SystemExit('Education dynamic import anchor not found')
-              text = text.replace(
-                  anchor,
-                  anchor + '\nconst GlobalSignals = dynamic(() => import("@/components/GlobalSignals"), { ssr: false });',
-                  1,
-              )
+          global_pattern = re.compile(
+              r'\s*<DeferredSection\s+rootMargin="900px 0px"\s+minHeight=\{1500\}\s*>\s*<GlobalSignals\s*/>\s*</DeferredSection>\s*',
+              re.S,
+          )
+          text, count = global_pattern.subn('\n\n', text, count=1)
+          if count != 1:
+              raise SystemExit(f'Expected exactly one GlobalSignals section, found {count}')
 
-          if '<GlobalSignals />' not in text:
-              pattern = re.compile(
-                  r'(?P<indent>\s*)<DeferredSection\s+rootMargin="700px 0px"\s+minHeight=\{700\}\s*>\s*<Education\s*/>\s*</DeferredSection>',
-                  re.S,
-              )
-              match = pattern.search(text)
-              if not match:
-                  raise SystemExit('Education DeferredSection anchor not found')
+          skills_pattern = re.compile(
+              r'(?P<indent>\s*)<DeferredSection\s+rootMargin="900px 0px"\s+minHeight=\{900\}\s*>\s*<Skills\s*/>\s*</DeferredSection>',
+              re.S,
+          )
+          match = skills_pattern.search(text)
+          if not match:
+              raise SystemExit('Skills DeferredSection anchor not found')
 
-              indent = match.group('indent')
-              block = (
-                  f'{indent}<DeferredSection\n'
-                  f'{indent}  rootMargin="900px 0px"\n'
-                  f'{indent}  minHeight={{1500}}\n'
-                  f'{indent}>\n'
-                  f'{indent}  <GlobalSignals />\n'
-                  f'{indent}</DeferredSection>\n\n'
-                  f'{indent}<DeferredSection\n'
-                  f'{indent}  rootMargin="700px 0px"\n'
-                  f'{indent}  minHeight={{700}}\n'
-                  f'{indent}>\n'
-                  f'{indent}  <Education />\n'
-                  f'{indent}</DeferredSection>'
-              )
-              text = text[:match.start()] + block + text[match.end():]
+          indent = match.group('indent')
+          global_block = (
+              f'{indent}<DeferredSection\n'
+              f'{indent}  rootMargin="900px 0px"\n'
+              f'{indent}  minHeight={{1500}}\n'
+              f'{indent}>\n'
+              f'{indent}  <GlobalSignals />\n'
+              f'{indent}</DeferredSection>\n\n'
+          )
 
+          text = text[:match.start()] + global_block + text[match.start():]
           path.write_text(text, encoding='utf-8')
-          print('GlobalSignals integrated into About page.')
+          print('GlobalSignals moved before Skills, directly below the About hero transition.')
           PY
 
       - name: Commit and push
@@ -74,6 +65,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "feat: showcase global opportunities and certifications"
+            git commit -m "ux: place global signals directly below about hero"
             git push origin main
           fi
