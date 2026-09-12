@@ -1,0 +1,60 @@
+name: Fix Afnan footer identity
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/fix-afnan-identity.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fix identity and social links
+        shell: bash
+        run: |
+          python <<'PY'
+          from pathlib import Path
+
+          footer = Path("src/components/footer.js")
+          text = footer.read_text(encoding="utf-8")
+          text = text.replace(
+              "Syeda Shamama\n                Afeef",
+              "Pathan Afnan\n                Khan",
+          )
+          text = text.replace(
+              "https://www.linkedin.com/in/syeda-shamama-afeef/",
+              "https://www.linkedin.com/in/afnan-khan4/",
+          )
+          footer.write_text(text, encoding="utf-8")
+
+          navbar = Path("src/components/NavBar.js")
+          text = navbar.read_text(encoding="utf-8")
+          text = text.replace(
+              "https://github.com/shamamaafeef2003",
+              "https://github.com/PathanAfnanKhan020319",
+          )
+          text = text.replace(
+              "https://www.linkedin.com/in/syeda-shamama-afeef/",
+              "https://www.linkedin.com/in/afnan-khan4/",
+          )
+          navbar.write_text(text, encoding="utf-8")
+          PY
+
+      - name: Commit changes
+        shell: bash
+        run: |
+          git config user.name "portfolio-fix-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/components/footer.js src/components/NavBar.js
+          if git diff --cached --quiet; then
+            echo "No changes needed"
+          else
+            git commit -m "fix: update Afnan footer identity and social links"
+            git push origin main
+          fi
