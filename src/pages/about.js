@@ -2234,20 +2234,6 @@ const About = () => {
           ================================================= */}
 
           <DeferredSection
-            rootMargin="900px 0px"
-            minHeight={900}
-          >
-            <Skills />
-          </DeferredSection>
-
-          <DeferredSection
-            rootMargin="900px 0px"
-            minHeight={900}
-          >
-            <Experience />
-          </DeferredSection>
-
-          <DeferredSection
 
 
             rootMargin="900px 0px"
@@ -2267,6 +2253,20 @@ const About = () => {
 
 
           <DeferredSection
+            rootMargin="900px 0px"
+            minHeight={900}
+          >
+            <Skills />
+          </DeferredSection>
+
+          <DeferredSection
+            rootMargin="900px 0px"
+            minHeight={900}
+          >
+            <Experience />
+          </DeferredSection>
+
+<DeferredSection
 
 
             rootMargin="700px 0px"
