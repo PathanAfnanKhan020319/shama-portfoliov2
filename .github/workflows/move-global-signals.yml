@@ -1,0 +1,73 @@
+name: Move global signals below About hero
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/move-global-signals.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  move:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Reposition GlobalSignals section
+        shell: bash
+        run: |
+          python <<'PY'
+          from pathlib import Path
+          import re
+
+          path = Path('src/pages/about.js')
+          text = path.read_text(encoding='utf-8')
+
+          # Remove the current GlobalSignals DeferredSection wherever it lives.
+          pattern = re.compile(
+              r'\n\s*<DeferredSection\s+rootMargin="900px 0px"\s+minHeight=\{1500\}\s*>\s*<GlobalSignals\s*/>\s*</DeferredSection>\s*',
+              re.S,
+          )
+          text, count = pattern.subn('\n\n', text, count=1)
+          if count != 1:
+              raise SystemExit(f'Expected one GlobalSignals block to move, found {count}')
+
+          # Insert it immediately after the About hero transition and before Skills.
+          skills_anchor = '''          <DeferredSection
+            rootMargin="900px 0px"
+            minHeight={900}
+          >
+            <Skills />
+          </DeferredSection>'''
+
+          global_block = '''          <DeferredSection
+            rootMargin="900px 0px"
+            minHeight={1500}
+          >
+            <GlobalSignals />
+          </DeferredSection>
+
+'''
+
+          if skills_anchor not in text:
+              raise SystemExit('Skills section anchor not found')
+
+          text = text.replace(skills_anchor, global_block + skills_anchor, 1)
+          path.write_text(text, encoding='utf-8')
+          print('Moved GlobalSignals directly below About hero and before Skills.')
+          PY
+
+      - name: Commit and push
+        shell: bash
+        run: |
+          git config user.name "portfolio-update-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/pages/about.js
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "ux: move global opportunity signals below about hero"
+            git push origin main
+          fi
