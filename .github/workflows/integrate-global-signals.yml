@@ -20,42 +20,46 @@ jobs:
         run: |
           python <<'PY'
           from pathlib import Path
+          import re
 
           path = Path('src/pages/about.js')
           text = path.read_text(encoding='utf-8')
 
-          old_import = 'const Education = dynamic(() => import("@/components/Education"), { ssr: false });\n'
-          new_import = old_import + 'const GlobalSignals = dynamic(() => import("@/components/GlobalSignals"), { ssr: false });\n'
-          if 'GlobalSignals' not in text:
-              if old_import not in text:
+          if 'const GlobalSignals = dynamic(' not in text:
+              anchor = 'const Education = dynamic(() => import("@/components/Education"), { ssr: false });'
+              if anchor not in text:
                   raise SystemExit('Education dynamic import anchor not found')
-              text = text.replace(old_import, new_import, 1)
-
-          old_block = '''          <DeferredSection
-            rootMargin="700px 0px"
-            minHeight={700}
-          >
-            <Education />
-          </DeferredSection>'''
-
-          new_block = '''          <DeferredSection
-            rootMargin="900px 0px"
-            minHeight={1500}
-          >
-            <GlobalSignals />
-          </DeferredSection>
-
-          <DeferredSection
-            rootMargin="700px 0px"
-            minHeight={700}
-          >
-            <Education />
-          </DeferredSection>'''
+              text = text.replace(
+                  anchor,
+                  anchor + '\nconst GlobalSignals = dynamic(() => import("@/components/GlobalSignals"), { ssr: false });',
+                  1,
+              )
 
           if '<GlobalSignals />' not in text:
-              if old_block not in text:
-                  raise SystemExit('Education section anchor not found')
-              text = text.replace(old_block, new_block, 1)
+              pattern = re.compile(
+                  r'(?P<indent>\s*)<DeferredSection\s+rootMargin="700px 0px"\s+minHeight=\{700\}\s*>\s*<Education\s*/>\s*</DeferredSection>',
+                  re.S,
+              )
+              match = pattern.search(text)
+              if not match:
+                  raise SystemExit('Education DeferredSection anchor not found')
+
+              indent = match.group('indent')
+              block = (
+                  f'{indent}<DeferredSection\n'
+                  f'{indent}  rootMargin="900px 0px"\n'
+                  f'{indent}  minHeight={{1500}}\n'
+                  f'{indent}>\n'
+                  f'{indent}  <GlobalSignals />\n'
+                  f'{indent}</DeferredSection>\n\n'
+                  f'{indent}<DeferredSection\n'
+                  f'{indent}  rootMargin="700px 0px"\n'
+                  f'{indent}  minHeight={{700}}\n'
+                  f'{indent}>\n'
+                  f'{indent}  <Education />\n'
+                  f'{indent}</DeferredSection>'
+              )
+              text = text[:match.start()] + block + text[match.end():]
 
           path.write_text(text, encoding='utf-8')
           print('GlobalSignals integrated into About page.')
