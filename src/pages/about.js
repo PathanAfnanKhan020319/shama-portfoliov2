@@ -32,6 +32,7 @@ import useMediaQuery from "@/components/hooks/useMediaQuery";
 const Skills = dynamic(() => import("@/components/Skills"), { ssr: false });
 const Experience = dynamic(() => import("@/components/Experience"), { ssr: false });
 const Education = dynamic(() => import("@/components/Education"), { ssr: false });
+const GlobalSignals = dynamic(() => import("@/components/GlobalSignals"), { ssr: false });
 
 /* =========================================================
    ANIMATED NUMBER
@@ -2247,10 +2248,39 @@ const About = () => {
           </DeferredSection>
 
           <DeferredSection
-            rootMargin="700px 0px"
-            minHeight={700}
+
+
+            rootMargin="900px 0px"
+
+
+            minHeight={1500}
+
+
           >
+
+
+            <GlobalSignals />
+
+
+          </DeferredSection>
+
+
+
+          <DeferredSection
+
+
+            rootMargin="700px 0px"
+
+
+            minHeight={700}
+
+
+          >
+
+
             <Education />
+
+
           </DeferredSection>
         </Layout>
       </main>
