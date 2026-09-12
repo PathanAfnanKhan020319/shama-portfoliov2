@@ -24,27 +24,14 @@ jobs:
           path = Path('src/pages/about.js')
           text = path.read_text(encoding='utf-8')
 
-          old = '''              <StatCard
-                value={3.5}
-                suffix="+"
-                label="Years Experience"
-                sublabel="Applied AI Engineering"
-                index={1}
-              />'''
-
-          new = '''              <StatCard
-                value={4}
-                suffix="+"
-                label="Years Experience"
-                sublabel="Applied AI Engineering"
-                index={1}
-              />'''
-
-          if old not in text:
-              raise SystemExit('Experience stat block not found or already updated')
-
-          path.write_text(text.replace(old, new, 1), encoding='utf-8')
-          print('Updated experience stat to 4+ years.')
+          if 'value={4}' in text and 'label="Years Experience"' in text:
+              print('Experience stat already shows 4+ years.')
+          elif 'value={3.5}' in text:
+              text = text.replace('value={3.5}', 'value={4}', 1)
+              path.write_text(text, encoding='utf-8')
+              print('Updated experience stat to 4+ years.')
+          else:
+              raise SystemExit('Could not find the 3.5 years value to update')
           PY
 
       - name: Commit and push
@@ -53,5 +40,9 @@ jobs:
           git config user.name "portfolio-update-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add src/pages/about.js
-          git commit -m "content: update experience to 4+ years"
-          git push origin main
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "content: update experience to 4+ years"
+            git push origin main
+          fi
