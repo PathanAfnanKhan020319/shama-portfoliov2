@@ -10,7 +10,7 @@ import React, {
   useState,
 } from "react";
 
-import profilePic from "../../public/images/profile/afsham.png";
+import profilePic from "../../public/images/profile/afnan-think.svg";
 
 import {
   AnimatePresence,
