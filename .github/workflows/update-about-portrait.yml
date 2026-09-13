@@ -56,3 +56,5 @@ jobs:
           git add src/pages/about.js
           git commit -m "design: replace about portrait with THINK profile" || exit 0
           git push origin main
+
+# trigger refresh
