@@ -1,0 +1,58 @@
+name: Update About Portrait
+
+on:
+  push:
+    paths:
+      - '.github/workflows/update-about-portrait.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-about-portrait:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Replace About portrait
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          path = Path('src/pages/about.js')
+          text = path.read_text()
+
+          text = text.replace('import Image from "next/image";\n', '')
+          text = text.replace(
+              'import profilePic from "../../public/images/profile/afsham.png";',
+              'const profilePic = "/images/profile/afnan-think.svg";'
+          )
+
+          pattern = r'<Image\s+src=\{profilePic\}.*?\/>'
+          replacement = '''<img
+          src={profilePic}
+          alt="Pathan Afnan Khan — THINK portrait"
+          loading="eager"
+          decoding="async"
+          className="relative z-10 w-full h-auto rounded-[1.25rem] object-cover"
+        />'''
+
+          text, count = re.subn(pattern, replacement, text, count=1, flags=re.S)
+          if count != 1:
+              raise SystemExit(f'Expected to replace 1 profile image block, replaced {count}')
+
+          path.write_text(text)
+          PY
+
+      - name: Commit changes
+        run: |
+          git config user.name "Pathan Afnan Khan"
+          git config user.email "134375218+PathanAfnanKhan020319@users.noreply.github.com"
+          git add src/pages/about.js
+          git commit -m "design: replace about portrait with THINK profile" || exit 0
+          git push origin main
