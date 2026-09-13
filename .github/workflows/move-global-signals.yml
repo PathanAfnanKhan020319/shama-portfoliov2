@@ -1,4 +1,4 @@
-name: Move global signals below About hero
+name: Update About THINK portrait
 
 on:
   push:
@@ -10,53 +10,27 @@ permissions:
   contents: write
 
 jobs:
-  move:
+  update-portrait:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
 
-      - name: Reposition GlobalSignals section
+      - name: Point About portrait to THINK artwork
         shell: bash
         run: |
           python <<'PY'
           from pathlib import Path
-          import re
 
           path = Path('src/pages/about.js')
           text = path.read_text(encoding='utf-8')
-
-          # Remove the current GlobalSignals DeferredSection wherever it lives.
-          pattern = re.compile(
-              r'\n\s*<DeferredSection\s+rootMargin="900px 0px"\s+minHeight=\{1500\}\s*>\s*<GlobalSignals\s*/>\s*</DeferredSection>\s*',
-              re.S,
-          )
-          text, count = pattern.subn('\n\n', text, count=1)
-          if count != 1:
-              raise SystemExit(f'Expected one GlobalSignals block to move, found {count}')
-
-          # Insert it immediately after the About hero transition and before Skills.
-          skills_anchor = '''          <DeferredSection
-            rootMargin="900px 0px"
-            minHeight={900}
-          >
-            <Skills />
-          </DeferredSection>'''
-
-          global_block = '''          <DeferredSection
-            rootMargin="900px 0px"
-            minHeight={1500}
-          >
-            <GlobalSignals />
-          </DeferredSection>
-
-'''
-
-          if skills_anchor not in text:
-              raise SystemExit('Skills section anchor not found')
-
-          text = text.replace(skills_anchor, global_block + skills_anchor, 1)
-          path.write_text(text, encoding='utf-8')
-          print('Moved GlobalSignals directly below About hero and before Skills.')
+          old = 'import profilePic from "../../public/images/profile/afsham.png";'
+          new = 'import profilePic from "../../public/images/profile/afnan-think.svg";'
+          if old not in text:
+              raise SystemExit('About portrait import anchor not found')
+          path.write_text(text.replace(old, new, 1), encoding='utf-8')
+          print('About page now uses the THINK portrait.')
           PY
 
       - name: Commit and push
@@ -68,6 +42,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "ux: move global opportunity signals below about hero"
+            git commit -m "design: use THINK portrait on about page"
             git push origin main
           fi
