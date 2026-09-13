@@ -1,4 +1,4 @@
-name: Update About THINK portrait
+name: Verify portfolio build
 
 on:
   push:
@@ -6,42 +6,21 @@ on:
     paths:
       - ".github/workflows/move-global-signals.yml"
 
-permissions:
-  contents: write
-
 jobs:
-  update-portrait:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           ref: main
 
-      - name: Point About portrait to THINK artwork
-        shell: bash
-        run: |
-          python <<'PY'
-          from pathlib import Path
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
 
-          path = Path('src/pages/about.js')
-          text = path.read_text(encoding='utf-8')
-          old = 'import profilePic from "../../public/images/profile/afsham.png";'
-          new = 'import profilePic from "../../public/images/profile/afnan-think.svg";'
-          if old not in text:
-              raise SystemExit('About portrait import anchor not found')
-          path.write_text(text.replace(old, new, 1), encoding='utf-8')
-          print('About page now uses the THINK portrait.')
-          PY
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Commit and push
-        shell: bash
-        run: |
-          git config user.name "portfolio-update-bot"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add src/pages/about.js
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "design: use THINK portrait on about page"
-            git push origin main
-          fi
+      - name: Build portfolio
+        run: npm run build
