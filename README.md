@@ -20,6 +20,16 @@ Official source repository for the portfolio of **Pathan Afnan Khan**, an AI/ML 
 - MLOps, Docker, Kubernetes and cloud-native deployments
 - AI solutions across Azure, AWS and Google Cloud
 
+## Selected AI engineering case studies
+
+- [DASH 2.0 Enterprise AI Assistant](https://pathan-afnan-khan.vercel.app/projects/dash-2-enterprise-ai-assistant) — secure enterprise conversational AI with LangChain, Azure OpenAI, SSO and access-aware retrieval.
+- [Enterprise Supply Chain Data Marketplace](https://pathan-afnan-khan.vercel.app/projects/supply-chain-data-marketplace) — AI-assisted discovery across governed enterprise data products and metadata.
+- [Enterprise RAG Semantic Search](https://pathan-afnan-khan.vercel.app/projects/rag-semantic-search) — embeddings, metadata filters, reranking and source-aware retrieval for data discovery.
+- [Generative AI Data Glossary Automation](https://pathan-afnan-khan.vercel.app/projects/genai-data-glossary) — structured LLM workflows for enterprise glossary generation and governance.
+- [Resume Analyzer with RAG and Reranking](https://pathan-afnan-khan.vercel.app/projects/resume-analyzer-rag) — section-aware chunking, embeddings, vector search and cross-encoder reranking.
+- [Slide Narrator — Multimodal AI](https://pathan-afnan-khan.vercel.app/projects/slide-narrator-multimodal-ai) — OCR, table extraction, image captioning and grounded presentation narration.
+- [GWEN AI Workflow Automation](https://pathan-afnan-khan.vercel.app/projects/gwen-ai-workflow-automation) — Python, FastAPI and Airflow for enterprise workflow automation.
+
 ## Portfolio sections
 
 - [Home](https://pathan-afnan-khan.vercel.app/)
