@@ -2,10 +2,11 @@ import Head from "next/head";
 import Link from "next/link";
 import Layout from "../../components/Layout";
 import { projectCaseStudies, projectBySlug } from "../../data/projectCaseStudies";
+import { articleFieldNotes } from "../../data/articleFieldNotes";
 
 const SITE = "https://pathan-afnan-khan.vercel.app";
 
-export default function ProjectCaseStudy({ project }) {
+export default function ProjectCaseStudy({ project, relatedArticles }) {
   const canonical = `${SITE}/projects/${project.slug}`;
 
   const schema = {
@@ -30,24 +31,9 @@ export default function ProjectCaseStudy({ project }) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: SITE,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Projects",
-        item: `${SITE}/projects`,
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: project.title,
-        item: canonical,
-      },
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE },
+      { "@type": "ListItem", position: 2, name: "Projects", item: `${SITE}/projects` },
+      { "@type": "ListItem", position: 3, name: project.title, item: canonical },
     ],
   };
 
@@ -63,14 +49,8 @@ export default function ProjectCaseStudy({ project }) {
         <meta property="og:description" content={project.description} />
         <meta property="og:url" content={canonical} />
         <meta name="twitter:card" content="summary_large_image" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
       </Head>
 
       <main className="w-full min-h-screen text-dark dark:text-light">
@@ -114,16 +94,12 @@ export default function ProjectCaseStudy({ project }) {
             <div className="grid grid-cols-2 md:grid-cols-1 gap-14">
               <article>
                 <h2 className="text-2xl font-bold mb-4">The challenge</h2>
-                <p className="text-dark/75 dark:text-light/75 leading-8">
-                  {project.challenge}
-                </p>
+                <p className="text-dark/75 dark:text-light/75 leading-8">{project.challenge}</p>
               </article>
 
               <article>
                 <h2 className="text-2xl font-bold mb-4">What I built</h2>
-                <p className="text-dark/75 dark:text-light/75 leading-8">
-                  {project.solution}
-                </p>
+                <p className="text-dark/75 dark:text-light/75 leading-8">{project.solution}</p>
               </article>
             </div>
 
@@ -157,33 +133,44 @@ export default function ProjectCaseStudy({ project }) {
               <h2 className="text-2xl font-bold mb-5">Technology</h2>
               <div className="flex flex-wrap gap-3">
                 {project.stack.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full border border-dark/20 dark:border-light/20 px-4 py-2 text-sm"
-                  >
+                  <span key={item} className="rounded-full border border-dark/20 dark:border-light/20 px-4 py-2 text-sm">
                     {item}
                   </span>
                 ))}
               </div>
             </section>
 
+            {relatedArticles.length > 0 && (
+              <aside className="mt-16 border-t border-dark/15 dark:border-light/15 pt-10">
+                <p className="uppercase tracking-[0.22em] text-xs opacity-60 mb-3">Related engineering notes</p>
+                <h2 className="text-3xl sm:text-2xl font-bold mb-7">
+                  The engineering ideas behind this system.
+                </h2>
+                <div className="grid grid-cols-2 md:grid-cols-1 gap-4">
+                  {relatedArticles.map((article) => (
+                    <Link
+                      key={article.slug}
+                      href={`/articles/${article.slug}`}
+                      className="rounded-2xl border border-dark/15 dark:border-light/15 p-5 hover:bg-dark/5 dark:hover:bg-light/5 transition-colors"
+                    >
+                      <p className="text-xs uppercase tracking-[0.16em] opacity-55 mb-2">Field note</p>
+                      <h3 className="font-bold text-lg leading-snug">{article.title}</h3>
+                      <p className="mt-2 text-sm opacity-65 leading-6">{article.summary}</p>
+                    </Link>
+                  ))}
+                </div>
+              </aside>
+            )}
+
             <aside className="mt-20 rounded-2xl bg-dark text-light dark:bg-light dark:text-dark p-10 sm:p-7">
-              <p className="uppercase tracking-[0.24em] text-xs opacity-60 mb-3">
-                Explore more
-              </p>
+              <p className="uppercase tracking-[0.24em] text-xs opacity-60 mb-3">Explore more</p>
               <h2 className="text-3xl sm:text-2xl font-bold mb-6">
                 More AI systems, experiments and engineering work.
               </h2>
               <div className="flex flex-wrap gap-5">
-                <Link href="/projects" className="underline underline-offset-4">
-                  All projects
-                </Link>
-                <Link href="/articles" className="underline underline-offset-4">
-                  Technical field notes
-                </Link>
-                <Link href="/resume" className="underline underline-offset-4">
-                  Professional profile
-                </Link>
+                <Link href="/projects" className="underline underline-offset-4">All projects</Link>
+                <Link href="/articles" className="underline underline-offset-4">Technical field notes</Link>
+                <Link href="/resume" className="underline underline-offset-4">Professional profile</Link>
               </div>
             </aside>
           </section>
@@ -195,21 +182,20 @@ export default function ProjectCaseStudy({ project }) {
 
 export function getStaticPaths() {
   return {
-    paths: projectCaseStudies.map((project) => ({
-      params: { slug: project.slug },
-    })),
+    paths: projectCaseStudies.map((project) => ({ params: { slug: project.slug } })),
     fallback: false,
   };
 }
 
 export function getStaticProps({ params }) {
   const project = projectBySlug[params.slug];
+  if (!project) return { notFound: true };
 
-  if (!project) {
-    return { notFound: true };
-  }
+  const relatedArticles = articleFieldNotes.filter((article) =>
+    article.relatedProjectSlugs.includes(project.slug)
+  );
 
   return {
-    props: { project },
+    props: { project, relatedArticles },
   };
 }
