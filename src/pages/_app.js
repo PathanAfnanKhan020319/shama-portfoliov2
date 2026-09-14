@@ -14,10 +14,74 @@ const montserrat = Montserrat({
   variable: "--font-mont",
 });
 
+const SITE_URL = "https://pathan-afnan-khan.vercel.app";
+const PROFILE_IMAGE = `${SITE_URL}/images/profile/afnan-think-exact.jpg`;
 const ROUTES_TO_PREFETCH = ["/", "/about", "/projects"];
+
+const homeStructuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${SITE_URL}/#person`,
+      name: "Pathan Afnan Khan",
+      alternateName: ["Afnan Khan", "Pathan Afnan"],
+      url: SITE_URL,
+      image: PROFILE_IMAGE,
+      jobTitle: ["AI Engineer", "Data Scientist", "Agentic AI Engineer"],
+      description:
+        "AI Engineer and Data Scientist specializing in Agentic AI, Generative AI, LLMs, RAG, Machine Learning, MLOps, and production-grade intelligent systems.",
+      sameAs: [
+        "https://www.linkedin.com/in/afnan-khan4/",
+        "https://github.com/PathanAfnanKhan020319",
+      ],
+      knowsAbout: [
+        "Artificial Intelligence",
+        "Machine Learning",
+        "Data Science",
+        "Agentic AI",
+        "Generative AI",
+        "Large Language Models",
+        "Retrieval-Augmented Generation",
+        "LangChain",
+        "LangGraph",
+        "MLOps",
+        "Cloud AI",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: "Pathan Afnan Khan — AI Portfolio",
+      alternateName: "Afnan Khan AI Portfolio",
+      publisher: {
+        "@id": `${SITE_URL}/#person`,
+      },
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": `${SITE_URL}/#profilepage`,
+      url: SITE_URL,
+      name: "Pathan Afnan Khan | AI Engineer, Data Scientist & Agentic AI",
+      description:
+        "Official portfolio of Pathan Afnan Khan featuring AI engineering, data science, Agentic AI, Generative AI, LLM, RAG, machine learning, and MLOps work.",
+      isPartOf: {
+        "@id": `${SITE_URL}/#website`,
+      },
+      mainEntity: {
+        "@id": `${SITE_URL}/#person`,
+      },
+    },
+  ],
+};
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
+
+  const cleanPath = (router.asPath || "/").split("#")[0].split("?")[0];
+  const canonicalUrl = `${SITE_URL}${cleanPath === "/" ? "" : cleanPath}`;
+  const isHome = router.pathname === "/";
 
   useEffect(() => {
     if (typeof window === "undefined") return undefined;
@@ -48,7 +112,42 @@ export default function App({ Component, pageProps }) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          name="robots"
+          content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
+        />
+        <meta
+          name="googlebot"
+          content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
+        />
+        <link rel="canonical" href={canonicalUrl} />
         <link rel="icon" href="/favicon.ico" />
+
+        <meta property="og:site_name" content="Pathan Afnan Khan — AI Portfolio" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:image" content={PROFILE_IMAGE} />
+        <meta
+          property="og:image:alt"
+          content="Pathan Afnan Khan — AI Engineer and Data Scientist"
+        />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content={PROFILE_IMAGE} />
+        <meta
+          name="twitter:image:alt"
+          content="Pathan Afnan Khan — AI Engineer and Data Scientist"
+        />
+        <meta name="theme-color" content="#0b0b0b" />
+
+        {isHome && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(homeStructuredData),
+            }}
+          />
+        )}
       </Head>
 
       <main
