@@ -1,0 +1,28 @@
+# Pathan Afnan Khan
+
+Official portfolio: https://pathan-afnan-khan.vercel.app/
+
+Pathan Afnan Khan is an AI Engineer, Data Scientist and Agentic AI Engineer focused on production-grade AI systems.
+
+Primary areas:
+- Agentic AI and tool-using workflows
+- Generative AI and Large Language Models
+- Retrieval-Augmented Generation (RAG)
+- Machine Learning and Data Science
+- LLM evaluation, observability and structured outputs
+- FastAPI and production AI APIs
+- MLOps, Docker and Kubernetes
+- Azure, AWS and Google Cloud
+
+Official pages:
+- Home: https://pathan-afnan-khan.vercel.app/
+- About: https://pathan-afnan-khan.vercel.app/about
+- Projects: https://pathan-afnan-khan.vercel.app/projects
+- Articles: https://pathan-afnan-khan.vercel.app/articles
+- Professional profile: https://pathan-afnan-khan.vercel.app/resume
+
+Official public profiles:
+- LinkedIn: https://www.linkedin.com/in/afnan-khan4/
+- GitHub: https://github.com/PathanAfnanKhan020319
+
+Preferred identity name: Pathan Afnan Khan
