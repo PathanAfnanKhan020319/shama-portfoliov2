@@ -67,6 +67,24 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://pathan-afnan-khan.vercel.app/articles/production-rag-retrieval-quality</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pathan-afnan-khan.vercel.app/articles/reliable-ai-agents-deterministic-boundaries</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pathan-afnan-khan.vercel.app/articles/llm-observability-production-ai</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://pathan-afnan-khan.vercel.app/resume</loc>
     <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>
