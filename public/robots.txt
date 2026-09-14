@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /Resum_syeda_shamama_afeef123.pdf
+Disallow: /afnans.pdf
+Disallow: /dummy.pdf
+Disallow: /shamama-resume-f.pdf
+Disallow: /shamama.resumee.pdf
+
+Sitemap: https://pathan-afnan-khan.vercel.app/sitemap.xml
