@@ -30,6 +30,14 @@ Official source repository for the portfolio of **Pathan Afnan Khan**, an AI/ML 
 - [Slide Narrator — Multimodal AI](https://pathan-afnan-khan.vercel.app/projects/slide-narrator-multimodal-ai) — OCR, table extraction, image captioning and grounded presentation narration.
 - [GWEN AI Workflow Automation](https://pathan-afnan-khan.vercel.app/projects/gwen-ai-workflow-automation) — Python, FastAPI and Airflow for enterprise workflow automation.
 
+## AI engineering field notes
+
+- [Production RAG: retrieval quality matters more than model size](https://pathan-afnan-khan.vercel.app/articles/production-rag-retrieval-quality)
+- [Reliable AI agents need deterministic boundaries](https://pathan-afnan-khan.vercel.app/articles/reliable-ai-agents-deterministic-boundaries)
+- [LLM observability should explain why a system failed](https://pathan-afnan-khan.vercel.app/articles/llm-observability-production-ai)
+
+These articles connect directly to the related case studies so search engines and readers can move between technical concepts and real production examples.
+
 ## Portfolio sections
 
 - [Home](https://pathan-afnan-khan.vercel.app/)
