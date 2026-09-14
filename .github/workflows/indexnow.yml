@@ -9,6 +9,7 @@ on:
       - 'public/llms.txt'
       - 'README.md'
       - 'public/d610096938f5fe0ddd21048ece5ba991.txt'
+      - '.github/workflows/indexnow.yml'
   workflow_dispatch:
 
 jobs:
