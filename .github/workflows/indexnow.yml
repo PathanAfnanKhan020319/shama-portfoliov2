@@ -1,0 +1,78 @@
+name: Submit portfolio URLs to IndexNow
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'public/sitemap.xml'
+      - 'public/llms.txt'
+      - 'README.md'
+      - 'public/d610096938f5fe0ddd21048ece5ba991.txt'
+  workflow_dispatch:
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Wait for IndexNow key to be live
+        shell: bash
+        run: |
+          set -e
+          KEY='d610096938f5fe0ddd21048ece5ba991'
+          URL="https://pathan-afnan-khan.vercel.app/${KEY}.txt"
+          for i in {1..24}; do
+            BODY="$(curl -fsS "$URL" 2>/dev/null || true)"
+            if [ "$BODY" = "$KEY" ]; then
+              echo "IndexNow key is live."
+              exit 0
+            fi
+            echo "Waiting for deployment... attempt $i/24"
+            sleep 10
+          done
+          echo "IndexNow key was not reachable in time."
+          exit 1
+
+      - name: Build IndexNow payload from sitemap
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import xml.etree.ElementTree as ET
+
+          key = 'd610096938f5fe0ddd21048ece5ba991'
+          host = 'pathan-afnan-khan.vercel.app'
+          tree = ET.parse('public/sitemap.xml')
+          root = tree.getroot()
+          ns = {'sm': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
+          urls = [
+              node.text.strip()
+              for node in root.findall('sm:url/sm:loc', ns)
+              if node.text and node.text.strip()
+          ]
+
+          payload = {
+              'host': host,
+              'key': key,
+              'keyLocation': f'https://{host}/{key}.txt',
+              'urlList': urls[:10000],
+          }
+
+          with open('/tmp/indexnow.json', 'w', encoding='utf-8') as f:
+              json.dump(payload, f)
+
+          print(f'Prepared {len(payload["urlList"])} URLs for IndexNow.')
+          PY
+
+      - name: Notify IndexNow
+        shell: bash
+        run: |
+          curl --fail-with-body --silent --show-error \
+            -X POST \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            --data-binary @/tmp/indexnow.json \
+            https://api.indexnow.org/indexnow
+          echo 'IndexNow submission completed.'
