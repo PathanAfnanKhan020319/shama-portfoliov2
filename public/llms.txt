@@ -30,6 +30,11 @@ Selected case studies:
 - Slide Narrator Multimodal AI: https://pathan-afnan-khan.vercel.app/projects/slide-narrator-multimodal-ai
 - GWEN AI Workflow Automation: https://pathan-afnan-khan.vercel.app/projects/gwen-ai-workflow-automation
 
+AI engineering field notes:
+- Production RAG Retrieval Quality: https://pathan-afnan-khan.vercel.app/articles/production-rag-retrieval-quality
+- Reliable AI Agents and Deterministic Boundaries: https://pathan-afnan-khan.vercel.app/articles/reliable-ai-agents-deterministic-boundaries
+- LLM Observability for Production AI: https://pathan-afnan-khan.vercel.app/articles/llm-observability-production-ai
+
 Official public profiles:
 - LinkedIn: https://www.linkedin.com/in/afnan-khan4/
 - GitHub: https://github.com/PathanAfnanKhan020319
