@@ -21,6 +21,15 @@ Official pages:
 - Articles: https://pathan-afnan-khan.vercel.app/articles
 - Professional profile: https://pathan-afnan-khan.vercel.app/resume
 
+Selected case studies:
+- DASH 2.0 Enterprise AI Assistant: https://pathan-afnan-khan.vercel.app/projects/dash-2-enterprise-ai-assistant
+- Enterprise Supply Chain Data Marketplace: https://pathan-afnan-khan.vercel.app/projects/supply-chain-data-marketplace
+- Enterprise RAG Semantic Search: https://pathan-afnan-khan.vercel.app/projects/rag-semantic-search
+- Generative AI Data Glossary Automation: https://pathan-afnan-khan.vercel.app/projects/genai-data-glossary
+- Resume Analyzer with RAG and Reranking: https://pathan-afnan-khan.vercel.app/projects/resume-analyzer-rag
+- Slide Narrator Multimodal AI: https://pathan-afnan-khan.vercel.app/projects/slide-narrator-multimodal-ai
+- GWEN AI Workflow Automation: https://pathan-afnan-khan.vercel.app/projects/gwen-ai-workflow-automation
+
 Official public profiles:
 - LinkedIn: https://www.linkedin.com/in/afnan-khan4/
 - GitHub: https://github.com/PathanAfnanKhan020319
