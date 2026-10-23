@@ -13,12 +13,22 @@ export default function ArticlePage({ article, relatedProjects }) {
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
+    "@id": `${canonical}#article`,
     headline: article.title,
     description: article.summary,
     url: canonical,
-    mainEntityOfPage: canonical,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      url: canonical,
+      isPartOf: {
+        "@id": `${SITE}/#website`,
+      },
+    },
     keywords: article.keywords.join(", "),
-    image: PROFILE_IMAGE,
+    image: {
+      "@id": `${SITE}/#primaryimage`,
+    },
     author: {
       "@id": `${SITE}/#person`,
     },
@@ -26,13 +36,14 @@ export default function ArticlePage({ article, relatedProjects }) {
       "@id": `${SITE}/#person`,
     },
     isPartOf: {
-      "@id": `${SITE}/#website`,
+      "@id": `${SITE}/articles#webpage`,
     },
   };
 
   const breadcrumb = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    "@id": `${canonical}#breadcrumb`,
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: SITE },
       { "@type": "ListItem", position: 2, name: "Articles", item: `${SITE}/articles` },
