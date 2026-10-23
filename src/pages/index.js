@@ -913,8 +913,12 @@ export default function Home() {
 
         <meta
           property="og:type"
-          content="website"
+          content="profile"
         />
+
+        <link rel="me" href="https://www.linkedin.com/in/afnan-khan4/" />
+        <link rel="me" href="https://github.com/PathanAfnanKhan020319" />
+        <link rel="me" href="https://x.com/AfnanKhan" />
 
         <link
           rel="icon"
