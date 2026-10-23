@@ -16,6 +16,7 @@ const montserrat = Montserrat({
 
 const SITE_URL = "https://pathan-afnan-khan.vercel.app";
 const PROFILE_IMAGE = `${SITE_URL}/images/profile/afnan-think-exact.jpg`;
+const PROFILE_IMAGE_ID = `${SITE_URL}/#primaryimage`;
 const ROUTES_TO_PREFETCH = ["/", "/about", "/projects"];
 
 const homeStructuredData = {
@@ -27,7 +28,9 @@ const homeStructuredData = {
       name: "Pathan Afnan Khan",
       alternateName: ["Afnan Khan", "Pathan Afnan"],
       url: SITE_URL,
-      image: PROFILE_IMAGE,
+      image: {
+        "@id": PROFILE_IMAGE_ID,
+      },
       jobTitle: ["AI Engineer", "Data Scientist", "Agentic AI Engineer"],
       description:
         "AI Engineer and Data Scientist specializing in Agentic AI, Generative AI, LLMs, RAG, Machine Learning, MLOps, and production-grade intelligent systems.",
@@ -48,6 +51,18 @@ const homeStructuredData = {
         "MLOps",
         "Cloud AI",
       ],
+    },
+    {
+      "@type": "ImageObject",
+      "@id": PROFILE_IMAGE_ID,
+      url: PROFILE_IMAGE,
+      contentUrl: PROFILE_IMAGE,
+      name: "Pathan Afnan Khan — AI Engineer and Data Scientist",
+      caption: "Pathan Afnan Khan — AI Engineer and Data Scientist",
+      creator: {
+        "@id": `${SITE_URL}/#person`,
+      },
+      representativeOfPage: true,
     },
     {
       "@type": "WebSite",
@@ -71,6 +86,12 @@ const homeStructuredData = {
       },
       mainEntity: {
         "@id": `${SITE_URL}/#person`,
+      },
+      image: {
+        "@id": PROFILE_IMAGE_ID,
+      },
+      primaryImageOfPage: {
+        "@id": PROFILE_IMAGE_ID,
       },
     },
   ],
