@@ -13,13 +13,10 @@ export default function Articles() {
     description:
       "Practical notes on Agentic AI, RAG, LLM evaluation, observability and production AI engineering by Pathan Afnan Khan.",
     author: {
-      "@type": "Person",
-      name: "Pathan Afnan Khan",
-      url: SITE,
-      sameAs: [
-        "https://www.linkedin.com/in/afnan-khan4/",
-        "https://github.com/PathanAfnanKhan020319",
-      ],
+      "@id": `${SITE}/#person`,
+    },
+    isPartOf: {
+      "@id": `${SITE}/#website`,
     },
     mainEntity: {
       "@type": "ItemList",
