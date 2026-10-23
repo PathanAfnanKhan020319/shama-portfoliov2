@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /api/
-Disallow: /afnans.pdf
 
 Sitemap: https://pathan-afnan-khan.vercel.app/sitemap.xml

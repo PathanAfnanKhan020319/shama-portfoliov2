@@ -4,6 +4,8 @@ Official portfolio: https://pathan-afnan-khan.vercel.app/
 
 Pathan Afnan Khan is an AI Engineer, Data Scientist and Agentic AI Engineer focused on production-grade AI systems.
 
+Current role: Data Scientist 2 at Hyland.
+
 Primary areas:
 - Agentic AI and tool-using workflows
 - Generative AI and Large Language Models

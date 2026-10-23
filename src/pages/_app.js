@@ -31,7 +31,17 @@ const identityStructuredData = {
       image: {
         "@id": PROFILE_IMAGE_ID,
       },
-      jobTitle: ["AI Engineer", "Data Scientist", "Agentic AI Engineer"],
+      jobTitle: [
+        "Data Scientist 2",
+        "AI Engineer",
+        "Data Scientist",
+        "Agentic AI Engineer",
+      ],
+      worksFor: {
+        "@type": "Organization",
+        name: "Hyland",
+        url: "https://www.hyland.com/en",
+      },
       description:
         "AI Engineer and Data Scientist specializing in Agentic AI, Generative AI, LLMs, RAG, Machine Learning, MLOps, and production-grade intelligent systems.",
       sameAs: [
