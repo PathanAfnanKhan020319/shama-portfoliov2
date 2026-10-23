@@ -5,6 +5,7 @@ import { projectCaseStudies, projectBySlug } from "../../data/projectCaseStudies
 import { articleFieldNotes } from "../../data/articleFieldNotes";
 
 const SITE = "https://pathan-afnan-khan.vercel.app";
+const PROFILE_IMAGE = `${SITE}/images/profile/afnan-think-exact.jpg`;
 
 export default function ProjectCaseStudy({ project, relatedArticles }) {
   const canonical = `${SITE}/projects/${project.slug}`;
@@ -16,14 +17,13 @@ export default function ProjectCaseStudy({ project, relatedArticles }) {
     description: project.description,
     url: canonical,
     keywords: project.keywords.join(", "),
+    mainEntityOfPage: canonical,
+    image: PROFILE_IMAGE,
     author: {
-      "@type": "Person",
-      name: "Pathan Afnan Khan",
-      url: SITE,
-      sameAs: [
-        "https://www.linkedin.com/in/afnan-khan4/",
-        "https://github.com/PathanAfnanKhan020319",
-      ],
+      "@id": `${SITE}/#person`,
+    },
+    isPartOf: {
+      "@id": `${SITE}/#website`,
     },
   };
 
