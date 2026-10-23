@@ -13,6 +13,15 @@ export default function Projects() {
     description:
       "Selected production AI, RAG, agentic AI, multimodal AI and enterprise data projects by Pathan Afnan Khan.",
     url: `${SITE}/projects`,
+    isPartOf: {
+      "@id": `${SITE}/#website`,
+    },
+    author: {
+      "@id": `${SITE}/#person`,
+    },
+    primaryImageOfPage: {
+      "@id": `${SITE}/#primaryimage`,
+    },
     mainEntity: {
       "@type": "ItemList",
       itemListElement: projectCaseStudies.map((project, index) => ({
