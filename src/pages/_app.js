@@ -37,6 +37,7 @@ const homeStructuredData = {
       sameAs: [
         "https://www.linkedin.com/in/afnan-khan4/",
         "https://github.com/PathanAfnanKhan020319",
+        "https://x.com/AfnanKhan",
       ],
       knowsAbout: [
         "Artificial Intelligence",
@@ -66,6 +67,7 @@ const homeStructuredData = {
       "@id": PROFILE_IMAGE_ID,
       url: PROFILE_IMAGE,
       contentUrl: PROFILE_IMAGE,
+      encodingFormat: "image/jpeg",
       name: "Pathan Afnan Khan — AI Engineer and Data Scientist",
       caption: "Pathan Afnan Khan — AI Engineer and Data Scientist",
       creator: {
@@ -157,12 +159,17 @@ export default function App({ Component, pageProps }) {
         <meta property="og:locale" content="en_US" />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:image" content={PROFILE_IMAGE} />
+        <meta property="og:image:secure_url" content={PROFILE_IMAGE} />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="300" />
+        <meta property="og:image:height" content="533" />
         <meta
           property="og:image:alt"
           content="Pathan Afnan Khan — AI Engineer and Data Scientist"
         />
 
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:creator" content="@AfnanKhan" />
         <meta name="twitter:image" content={PROFILE_IMAGE} />
         <meta
           name="twitter:image:alt"
