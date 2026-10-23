@@ -13,6 +13,10 @@ export default function Articles() {
     url: `${SITE}/articles`,
     description:
       "Practical notes on Agentic AI, RAG, LLM evaluation, observability and production AI engineering by Pathan Afnan Khan.",
+    inLanguage: "en",
+    primaryImageOfPage: {
+      "@id": `${SITE}/#primaryimage`,
+    },
     author: {
       "@id": `${SITE}/#person`,
     },

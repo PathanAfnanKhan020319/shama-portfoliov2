@@ -44,6 +44,7 @@ const aboutStructuredData = {
   name: "About Pathan Afnan Khan — AI Engineer and Data Scientist",
   description:
     "About Pathan Afnan Khan, an AI Engineer and Data Scientist specializing in Agentic AI, Generative AI, LLMs, RAG, Machine Learning and production AI systems.",
+  inLanguage: "en",
   isPartOf: {
     "@id": `${SITE_URL}/#website`,
   },

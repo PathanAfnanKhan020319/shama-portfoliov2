@@ -68,6 +68,8 @@ const identityStructuredData = {
       url: PROFILE_IMAGE,
       contentUrl: PROFILE_IMAGE,
       encodingFormat: "image/jpeg",
+      width: 300,
+      height: 533,
       name: "Pathan Afnan Khan — AI Engineer and Data Scientist",
       caption: "Pathan Afnan Khan — AI Engineer and Data Scientist",
       creator: {
@@ -80,6 +82,14 @@ const identityStructuredData = {
       url: SITE_URL,
       name: "Pathan Afnan Khan — AI Portfolio",
       alternateName: "Afnan Khan AI Portfolio",
+      inLanguage: "en",
+      hasPart: [
+        { "@id": `${SITE_URL}/#profilepage` },
+        { "@id": `${SITE_URL}/about#webpage` },
+        { "@id": `${SITE_URL}/resume#webpage` },
+        { "@id": `${SITE_URL}/projects#webpage` },
+        { "@id": `${SITE_URL}/articles#webpage` },
+      ],
       publisher: {
         "@id": `${SITE_URL}/#person`,
       },
@@ -95,6 +105,7 @@ const homeProfileStructuredData = {
   name: "Pathan Afnan Khan | AI Engineer, Data Scientist & Agentic AI",
   description:
     "Official portfolio of Pathan Afnan Khan featuring AI engineering, data science, Agentic AI, Generative AI, LLM, RAG, machine learning, and MLOps work.",
+  inLanguage: "en",
   isPartOf: {
     "@id": `${SITE_URL}/#website`,
   },
@@ -154,6 +165,9 @@ export default function App({ Component, pageProps }) {
           content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
         />
         <link rel="canonical" href={canonicalUrl} />
+        <link rel="me" href="https://www.linkedin.com/in/afnan-khan4/" />
+        <link rel="me" href="https://github.com/PathanAfnanKhan020319" />
+        <link rel="me" href="https://x.com/AfnanKhan" />
         <link rel="icon" href="/favicon.ico" />
 
         <meta property="og:site_name" content="Pathan Afnan Khan — AI Portfolio" />
@@ -170,6 +184,7 @@ export default function App({ Component, pageProps }) {
         />
 
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@AfnanKhan" />
         <meta name="twitter:creator" content="@AfnanKhan" />
         <meta name="twitter:image" content={PROFILE_IMAGE} />
         <meta

@@ -14,6 +14,7 @@ export default function Projects() {
     description:
       "Selected production AI, RAG, agentic AI, multimodal AI and enterprise data projects by Pathan Afnan Khan.",
     url: `${SITE}/projects`,
+    inLanguage: "en",
     isPartOf: {
       "@id": `${SITE}/#website`,
     },

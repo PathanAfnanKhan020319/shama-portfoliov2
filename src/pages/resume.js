@@ -21,6 +21,7 @@ export default function ResumePage() {
     url: `${SITE}/resume`,
     description:
       "Professional profile of Pathan Afnan Khan, an AI Engineer and Data Scientist with 4+ years of experience in Agentic AI, Generative AI, LLMs, RAG, ML, MLOps and cloud AI.",
+    inLanguage: "en",
     isPartOf: {
       "@id": `${SITE}/#website`,
     },

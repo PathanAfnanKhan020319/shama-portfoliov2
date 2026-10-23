@@ -916,10 +916,6 @@ export default function Home() {
           content="profile"
         />
 
-        <link rel="me" href="https://www.linkedin.com/in/afnan-khan4/" />
-        <link rel="me" href="https://github.com/PathanAfnanKhan020319" />
-        <link rel="me" href="https://x.com/AfnanKhan" />
-
         <link
           rel="icon"
           href="/favicon.ico"
