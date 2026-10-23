@@ -5,6 +5,7 @@ import { articleFieldNotes, articleBySlug } from "../../data/articleFieldNotes";
 import { projectBySlug } from "../../data/projectCaseStudies";
 
 const SITE = "https://pathan-afnan-khan.vercel.app";
+const PROFILE_IMAGE = `${SITE}/images/profile/afnan-think-exact.jpg`;
 
 export default function ArticlePage({ article, relatedProjects }) {
   const canonical = `${SITE}/articles/${article.slug}`;
@@ -19,19 +20,15 @@ export default function ArticlePage({ article, relatedProjects }) {
     datePublished: "2026-09-14",
     dateModified: "2026-09-14",
     keywords: article.keywords.join(", "),
+    image: PROFILE_IMAGE,
     author: {
-      "@type": "Person",
-      name: "Pathan Afnan Khan",
-      url: SITE,
-      sameAs: [
-        "https://www.linkedin.com/in/afnan-khan4/",
-        "https://github.com/PathanAfnanKhan020319",
-      ],
+      "@id": `${SITE}/#person`,
     },
     publisher: {
-      "@type": "Person",
-      name: "Pathan Afnan Khan",
-      url: SITE,
+      "@id": `${SITE}/#person`,
+    },
+    isPartOf: {
+      "@id": `${SITE}/#website`,
     },
   };
 
