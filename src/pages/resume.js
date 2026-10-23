@@ -16,38 +16,19 @@ export default function ResumePage() {
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
+    "@id": `${SITE}/resume#webpage`,
     name: "Pathan Afnan Khan — Professional AI Engineering Profile",
     url: `${SITE}/resume`,
-    dateModified: "2026-09-14",
+    description:
+      "Professional profile of Pathan Afnan Khan, an AI Engineer and Data Scientist with 4+ years of experience in Agentic AI, Generative AI, LLMs, RAG, ML, MLOps and cloud AI.",
+    isPartOf: {
+      "@id": `${SITE}/#website`,
+    },
     mainEntity: {
-      "@type": "Person",
-      name: "Pathan Afnan Khan",
-      url: SITE,
-      image: `${SITE}/images/profile/afnan-think-exact.jpg`,
-      jobTitle: [
-        "AI Engineer",
-        "Data Scientist",
-        "Agentic AI Engineer",
-        "Generative AI Engineer",
-      ],
-      description:
-        "AI/ML Engineer with 4+ years of experience building production AI systems across Agentic AI, Generative AI, LLMs, RAG, Machine Learning, APIs, MLOps and cloud platforms.",
-      knowsAbout: [
-        "Agentic AI",
-        "Generative AI",
-        "Large Language Models",
-        "Retrieval-Augmented Generation",
-        "Machine Learning",
-        "Data Science",
-        "MLOps",
-        "FastAPI",
-        "LangGraph",
-        "Cloud AI",
-      ],
-      sameAs: [
-        "https://www.linkedin.com/in/afnan-khan4/",
-        "https://github.com/PathanAfnanKhan020319",
-      ],
+      "@id": `${SITE}/#person`,
+    },
+    primaryImageOfPage: {
+      "@id": `${SITE}/#primaryimage`,
     },
   };
 
