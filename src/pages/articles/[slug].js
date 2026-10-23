@@ -17,8 +17,6 @@ export default function ArticlePage({ article, relatedProjects }) {
     description: article.summary,
     url: canonical,
     mainEntityOfPage: canonical,
-    datePublished: "2026-09-14",
-    dateModified: "2026-09-14",
     keywords: article.keywords.join(", "),
     image: PROFILE_IMAGE,
     author: {
@@ -54,7 +52,6 @@ export default function ArticlePage({ article, relatedProjects }) {
         <meta property="og:description" content={article.summary} />
         <meta property="og:url" content={canonical} />
         <meta property="article:author" content="Pathan Afnan Khan" />
-        <meta property="article:published_time" content="2026-09-14" />
         <meta name="twitter:card" content="summary_large_image" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
