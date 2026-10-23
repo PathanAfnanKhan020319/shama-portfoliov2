@@ -1,92 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://pathan-afnan-khan.vercel.app/</loc>
-    <lastmod>2026-09-14</lastmod>
+    <image:image>
+      <image:loc>https://pathan-afnan-khan.vercel.app/images/profile/afsham.png</image:loc>
+    </image:image>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://pathan-afnan-khan.vercel.app/about</loc>
-    <lastmod>2026-09-14</lastmod>
+    <image:image>
+      <image:loc>https://pathan-afnan-khan.vercel.app/images/profile/afnan-think-exact.jpg</image:loc>
+    </image:image>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pathan-afnan-khan.vercel.app/projects</loc>
-    <lastmod>2026-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pathan-afnan-khan.vercel.app/projects/dash-2-enterprise-ai-assistant</loc>
-    <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pathan-afnan-khan.vercel.app/projects/supply-chain-data-marketplace</loc>
-    <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pathan-afnan-khan.vercel.app/projects/rag-semantic-search</loc>
-    <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pathan-afnan-khan.vercel.app/projects/genai-data-glossary</loc>
-    <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pathan-afnan-khan.vercel.app/projects/resume-analyzer-rag</loc>
-    <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pathan-afnan-khan.vercel.app/projects/slide-narrator-multimodal-ai</loc>
-    <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pathan-afnan-khan.vercel.app/projects/gwen-ai-workflow-automation</loc>
-    <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pathan-afnan-khan.vercel.app/articles</loc>
-    <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pathan-afnan-khan.vercel.app/articles/production-rag-retrieval-quality</loc>
-    <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pathan-afnan-khan.vercel.app/articles/reliable-ai-agents-deterministic-boundaries</loc>
-    <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pathan-afnan-khan.vercel.app/articles/llm-observability-production-ai</loc>
-    <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pathan-afnan-khan.vercel.app/resume</loc>
-    <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
