@@ -15,7 +15,7 @@ const montserrat = Montserrat({
 });
 
 const SITE_URL = "https://pathan-afnan-khan.vercel.app";
-const PROFILE_IMAGE = `${SITE_URL}/images/profile/afnan-think-exact.jpg`;
+const PROFILE_IMAGE = `${SITE_URL}/images/profile/pathan-afnan-khan-ai-engineer.jpg`;
 const PROFILE_IMAGE_ID = `${SITE_URL}/#primaryimage`;
 const ROUTES_TO_PREFETCH = ["/", "/about", "/projects"];
 
