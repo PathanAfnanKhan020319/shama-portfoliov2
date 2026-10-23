@@ -8,6 +8,7 @@ export default function Articles() {
   const collectionSchema = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
+    "@id": `${SITE}/articles#webpage`,
     name: "AI Engineering Field Notes by Pathan Afnan Khan",
     url: `${SITE}/articles`,
     description:
