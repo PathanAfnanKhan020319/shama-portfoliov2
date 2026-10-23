@@ -13,23 +13,34 @@ export default function ProjectCaseStudy({ project, relatedArticles }) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
+    "@id": `${canonical}#creativework`,
     name: project.title,
     description: project.description,
     url: canonical,
     keywords: project.keywords.join(", "),
-    mainEntityOfPage: canonical,
-    image: PROFILE_IMAGE,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      url: canonical,
+      isPartOf: {
+        "@id": `${SITE}/#website`,
+      },
+    },
+    image: {
+      "@id": `${SITE}/#primaryimage`,
+    },
     author: {
       "@id": `${SITE}/#person`,
     },
     isPartOf: {
-      "@id": `${SITE}/#website`,
+      "@id": `${SITE}/projects#webpage`,
     },
   };
 
   const breadcrumb = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    "@id": `${canonical}#breadcrumb`,
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: SITE },
       { "@type": "ListItem", position: 2, name: "Projects", item: `${SITE}/projects` },
