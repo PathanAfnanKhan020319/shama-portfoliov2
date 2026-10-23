@@ -51,6 +51,15 @@ const homeStructuredData = {
         "MLOps",
         "Cloud AI",
       ],
+      mainEntityOfPage: {
+        "@id": `${SITE_URL}/#profilepage`,
+      },
+      subjectOf: [
+        { "@id": `${SITE_URL}/about#webpage` },
+        { "@id": `${SITE_URL}/resume#webpage` },
+        { "@id": `${SITE_URL}/projects#webpage` },
+        { "@id": `${SITE_URL}/articles#webpage` },
+      ],
     },
     {
       "@type": "ImageObject",
