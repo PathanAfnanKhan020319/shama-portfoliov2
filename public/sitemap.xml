@@ -3,7 +3,7 @@
   <url>
     <loc>https://pathan-afnan-khan.vercel.app/</loc>
     <image:image>
-      <image:loc>https://pathan-afnan-khan.vercel.app/images/profile/afsham.png</image:loc>
+      <image:loc>https://pathan-afnan-khan.vercel.app/images/profile/pathan-afnan-khan-google-profile.jpg</image:loc>
     </image:image>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -11,7 +11,7 @@
   <url>
     <loc>https://pathan-afnan-khan.vercel.app/about</loc>
     <image:image>
-      <image:loc>https://pathan-afnan-khan.vercel.app/images/profile/pathan-afnan-khan-ai-engineer.jpg</image:loc>
+      <image:loc>https://pathan-afnan-khan.vercel.app/images/profile/pathan-afnan-khan-google-profile.jpg</image:loc>
     </image:image>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>

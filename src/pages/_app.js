@@ -15,7 +15,7 @@ const montserrat = Montserrat({
 });
 
 const SITE_URL = "https://pathan-afnan-khan.vercel.app";
-const PROFILE_IMAGE = `${SITE_URL}/images/profile/pathan-afnan-khan-ai-engineer.jpg`;
+const PROFILE_IMAGE = `${SITE_URL}/images/profile/pathan-afnan-khan-google-profile.jpg`;
 const PROFILE_IMAGE_ID = `${SITE_URL}/#primaryimage`;
 const ROUTES_TO_PREFETCH = ["/", "/about", "/projects"];
 
@@ -78,13 +78,14 @@ const identityStructuredData = {
       url: PROFILE_IMAGE,
       contentUrl: PROFILE_IMAGE,
       encodingFormat: "image/jpeg",
-      width: 300,
-      height: 533,
+      width: 800,
+      height: 1000,
       name: "Pathan Afnan Khan — AI Engineer and Data Scientist",
       caption: "Pathan Afnan Khan — AI Engineer and Data Scientist",
       creator: {
         "@id": `${SITE_URL}/#person`,
       },
+      representativeOfPage: true,
     },
     {
       "@type": "WebSite",
@@ -186,8 +187,8 @@ export default function App({ Component, pageProps }) {
         <meta property="og:image" content={PROFILE_IMAGE} />
         <meta property="og:image:secure_url" content={PROFILE_IMAGE} />
         <meta property="og:image:type" content="image/jpeg" />
-        <meta property="og:image:width" content="300" />
-        <meta property="og:image:height" content="533" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="1000" />
         <meta
           property="og:image:alt"
           content="Pathan Afnan Khan — AI Engineer and Data Scientist"
