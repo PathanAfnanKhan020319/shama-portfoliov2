@@ -34,6 +34,27 @@ const Experience = dynamic(() => import("@/components/Experience"), { ssr: false
 const Education = dynamic(() => import("@/components/Education"), { ssr: false });
 const GlobalSignals = dynamic(() => import("@/components/GlobalSignals"), { ssr: false });
 
+const SITE_URL = "https://pathan-afnan-khan.vercel.app";
+
+const aboutStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "@id": `${SITE_URL}/about#webpage`,
+  url: `${SITE_URL}/about`,
+  name: "About Pathan Afnan Khan — AI Engineer and Data Scientist",
+  description:
+    "About Pathan Afnan Khan, an AI Engineer and Data Scientist specializing in Agentic AI, Generative AI, LLMs, RAG, Machine Learning and production AI systems.",
+  isPartOf: {
+    "@id": `${SITE_URL}/#website`,
+  },
+  mainEntity: {
+    "@id": `${SITE_URL}/#person`,
+  },
+  primaryImageOfPage: {
+    "@id": `${SITE_URL}/#primaryimage`,
+  },
+};
+
 /* =========================================================
    ANIMATED NUMBER
 ========================================================= */
@@ -1682,6 +1703,13 @@ const About = () => {
         <meta
           name="keywords"
           content="Pathan Afnan Khan, AI Engineer, Data Scientist, Agentic AI, Generative AI, LLM, RAG, Machine Learning, MLOps, Cloud AI"
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(aboutStructuredData),
+          }}
         />
       </Head>
 
