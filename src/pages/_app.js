@@ -19,7 +19,7 @@ const PROFILE_IMAGE = `${SITE_URL}/images/profile/pathan-afnan-khan-ai-engineer.
 const PROFILE_IMAGE_ID = `${SITE_URL}/#primaryimage`;
 const ROUTES_TO_PREFETCH = ["/", "/about", "/projects"];
 
-const homeStructuredData = {
+const identityStructuredData = {
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -73,7 +73,6 @@ const homeStructuredData = {
       creator: {
         "@id": `${SITE_URL}/#person`,
       },
-      representativeOfPage: true,
     },
     {
       "@type": "WebSite",
@@ -85,27 +84,29 @@ const homeStructuredData = {
         "@id": `${SITE_URL}/#person`,
       },
     },
-    {
-      "@type": "ProfilePage",
-      "@id": `${SITE_URL}/#profilepage`,
-      url: SITE_URL,
-      name: "Pathan Afnan Khan | AI Engineer, Data Scientist & Agentic AI",
-      description:
-        "Official portfolio of Pathan Afnan Khan featuring AI engineering, data science, Agentic AI, Generative AI, LLM, RAG, machine learning, and MLOps work.",
-      isPartOf: {
-        "@id": `${SITE_URL}/#website`,
-      },
-      mainEntity: {
-        "@id": `${SITE_URL}/#person`,
-      },
-      image: {
-        "@id": PROFILE_IMAGE_ID,
-      },
-      primaryImageOfPage: {
-        "@id": PROFILE_IMAGE_ID,
-      },
-    },
   ],
+};
+
+const homeProfileStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": `${SITE_URL}/#profilepage`,
+  url: SITE_URL,
+  name: "Pathan Afnan Khan | AI Engineer, Data Scientist & Agentic AI",
+  description:
+    "Official portfolio of Pathan Afnan Khan featuring AI engineering, data science, Agentic AI, Generative AI, LLM, RAG, machine learning, and MLOps work.",
+  isPartOf: {
+    "@id": `${SITE_URL}/#website`,
+  },
+  mainEntity: {
+    "@id": `${SITE_URL}/#person`,
+  },
+  image: {
+    "@id": PROFILE_IMAGE_ID,
+  },
+  primaryImageOfPage: {
+    "@id": PROFILE_IMAGE_ID,
+  },
 };
 
 export default function App({ Component, pageProps }) {
@@ -177,11 +178,18 @@ export default function App({ Component, pageProps }) {
         />
         <meta name="theme-color" content="#0b0b0b" />
 
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(identityStructuredData),
+          }}
+        />
+
         {isHome && (
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
-              __html: JSON.stringify(homeStructuredData),
+              __html: JSON.stringify(homeProfileStructuredData),
             }}
           />
         )}
