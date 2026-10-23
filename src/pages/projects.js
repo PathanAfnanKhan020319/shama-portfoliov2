@@ -9,6 +9,7 @@ export default function Projects() {
   const collectionSchema = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
+    "@id": `${SITE}/projects#webpage`,
     name: "AI Engineering Projects — Pathan Afnan Khan",
     description:
       "Selected production AI, RAG, agentic AI, multimodal AI and enterprise data projects by Pathan Afnan Khan.",
