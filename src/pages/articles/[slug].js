@@ -5,7 +5,7 @@ import { articleFieldNotes, articleBySlug } from "../../data/articleFieldNotes";
 import { projectBySlug } from "../../data/projectCaseStudies";
 
 const SITE = "https://pathan-afnan-khan.vercel.app";
-const PROFILE_IMAGE = `${SITE}/images/profile/afnan-think-exact.jpg`;
+const PROFILE_IMAGE = `${SITE}/images/profile/pathan-afnan-khan-ai-engineer.jpg`;
 
 export default function ArticlePage({ article, relatedProjects }) {
   const canonical = `${SITE}/articles/${article.slug}`;
