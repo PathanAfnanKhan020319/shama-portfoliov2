@@ -1,0 +1,4 @@
+const fs=require('fs'),path=require('path'),pages=require('./pages'),article=require('./article2');
+const c=JSON.parse(fs.readFileSync(process.argv[2]||'config.json','utf8')),out=process.argv[3]||'dist';fs.rmSync(out,{recursive:true,force:true});fs.mkdirSync(path.join(out,'articles'),{recursive:true});
+const base='https://'+c.slug+'.vercel.app/',web={"@type":"WebSite","@id":base+"#website","url":base,"name":c.brand};
+fs.writeFileSync(path.join(out,'index.html'),pages.home(c,base,web));fs.writeFileSync(path.join(out,'journal.html'),pages.journal(c,base,web));c.articles.forEach((a,i)=>fs.writeFileSync(path.join(out,'articles',String(i+1)+'.html'),article(c,base,web,a,i)));
