@@ -1,0 +1,4 @@
+const {PROFILE,IMAGE,SAME,esc}=require('./constants');
+exports.nav=c=>'<header class="top"><div class="shell topin"><b>'+esc(c.brand)+'</b><nav class="nav"><a href="/journal.html">Journal</a> · <a href="'+PROFILE+'/about">About Afnan ↗</a></nav></div></header>';
+exports.author=c=>'<section class="author"><img src="'+IMAGE+'" alt="Pathan Afnan Khan professional portrait"><div><div class="eyebrow">AUTHOR / PERSPECTIVE</div><h2>About Pathan Afnan Khan.</h2><p>'+esc(c.bio)+'</p><p class="meta">Data Scientist 2 at Hyland · AI Engineer · Agentic AI Engineer · Entrepreneur</p><div class="links"><a href="'+PROFILE+'/about">Professional profile ↗</a><a href="'+SAME[0]+'">LinkedIn ↗</a><a href="'+SAME[1]+'">GitHub ↗</a><a href="'+SAME[2]+'">X ↗</a></div></div></section>';
+exports.foot=c=>'<footer class="footer"><div class="shell">Independent technical publication by Pathan Afnan Khan · '+esc(c.brand)+'</div></footer>';
