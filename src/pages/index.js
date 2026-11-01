@@ -9,6 +9,7 @@ import {
   useSpring,
 } from "framer-motion";
 
+import WebGLGuard from "@/components/WebGLGuard";
 import * as THREE from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
 import {
@@ -650,7 +651,8 @@ function CameraRig() {
 function AIUniverse() {
   return (
     <div className="absolute inset-0 w-full h-full pointer-events-none">
-      <Canvas
+      <WebGLGuard>
+        <Canvas
         camera={{
           position: [0, 0, 7],
           fov: 42,
@@ -696,7 +698,8 @@ function AIUniverse() {
         />
 
         <CameraRig />
-      </Canvas>
+        </Canvas>
+      </WebGLGuard>
     </div>
   );
 }

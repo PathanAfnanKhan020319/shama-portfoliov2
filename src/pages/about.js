@@ -21,6 +21,7 @@ import {
   useTransform,
 } from "framer-motion";
 
+import WebGLGuard from "@/components/WebGLGuard";
 import * as THREE from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Line, Sparkles } from "@react-three/drei";
@@ -442,7 +443,8 @@ function CameraRig() {
 function NeuralUniverse() {
   return (
     <div className="absolute inset-0 w-full h-full pointer-events-none">
-      <Canvas
+      <WebGLGuard>
+        <Canvas
         camera={{
           position: [0, 0, 6.7],
           fov: 42,
@@ -479,7 +481,8 @@ function NeuralUniverse() {
         />
 
         <CameraRig />
-      </Canvas>
+        </Canvas>
+      </WebGLGuard>
     </div>
   );
 }
