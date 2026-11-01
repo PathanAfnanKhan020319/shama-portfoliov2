@@ -54,6 +54,11 @@ const NAV_ITEMS = [
     title: "Articles",
     number: "04",
   },
+  {
+    href: "/publications",
+    title: "Publications",
+    number: "05",
+  },
 ];
 
 const SOCIALS = [
