@@ -1,0 +1,12 @@
+{"id":"q01","question":"How does Northstar AI prevent duplicate ingestion chunks?","tenant":"public","groups":["readers"],"as_of":"2026-11-01","expected_doc_ids":["ns-ingestion"],"category":"ingestion"}
+{"id":"q02","question":"What chunk size and overlap are used as the initial reference?","tenant":"public","groups":["readers"],"as_of":"2026-11-01","expected_doc_ids":["ns-chunking"],"category":"exact-numbers"}
+{"id":"q03","question":"How are BM25 and vector search results combined?","tenant":"public","groups":["readers"],"as_of":"2026-11-01","expected_doc_ids":["ns-hybrid"],"category":"hybrid"}
+{"id":"q04","question":"What makes a citation quote valid?","tenant":"public","groups":["readers"],"as_of":"2026-11-01","expected_doc_ids":["ns-citations"],"category":"citation"}
+{"id":"q05","question":"How does a revoked document disappear from serving?","tenant":"public","groups":["readers"],"as_of":"2026-11-01","expected_doc_ids":["ns-deletion"],"category":"lifecycle"}
+{"id":"q06","question":"Which metrics track latency and citation failures?","tenant":"public","groups":["readers"],"as_of":"2026-11-01","expected_doc_ids":["ns-observability"],"category":"operations"}
+{"id":"q07","question":"What does the system do when the vector backend fails?","tenant":"public","groups":["readers"],"as_of":"2026-11-01","expected_doc_ids":["ns-outage"],"category":"resilience"}
+{"id":"q08","question":"How long are cache results retained after July 2026?","tenant":"public","groups":["readers"],"as_of":"2026-11-01","expected_doc_ids":["ns-retention"],"category":"temporal"}
+{"id":"q09","question":"How long are cache results retained in March 2026?","tenant":"public","groups":["readers"],"as_of":"2026-03-01","expected_doc_ids":["ns-retention"],"category":"temporal"}
+{"id":"q10","question":"What is the fictional administrator canary word?","tenant":"public","groups":["readers"],"as_of":"2026-11-01","expected_doc_ids":[],"forbidden_doc_ids":["ns-private","boreal-private"],"category":"acl-denial"}
+{"id":"q11","question":"What is the release window for the Boreal tenant?","tenant":"public","groups":["readers"],"as_of":"2026-11-01","expected_doc_ids":[],"forbidden_doc_ids":["boreal-private"],"category":"cross-tenant"}
+{"id":"q12","question":"What is the office cafeteria lunch menu?","tenant":"public","groups":["readers"],"as_of":"2026-11-01","expected_doc_ids":[],"category":"unanswerable"}

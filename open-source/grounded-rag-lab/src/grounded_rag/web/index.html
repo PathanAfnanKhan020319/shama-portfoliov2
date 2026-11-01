@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Grounded RAG Lab — Evidence First</title>
+  <meta name="description" content="A local reproducible RAG retrieval experiment with exact source citations.">
+  <link rel="stylesheet" href="/app.css">
+  <script defer src="/app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Grounded RAG Lab home"><span class="brandmark">G</span>GROUNDED <span>RAG LAB</span></a>
+    <div class="status"><span class="pulse"></span> LOCAL / SYNTHETIC DATA</div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="eyebrow">FIELD NOTE 001 <span class="dash"></span> APPLIED AI ENGINEERING</div>
+      <h1>Ask better questions.<br><em>Show the evidence.</em></h1>
+      <p>A transparent, reproducible retrieval lab. Compare lexical BM25, LSA vectors and reciprocal-rank fusion. See exactly which authorized passages support each result.</p>
+      <div class="pills"><span>BM25</span><span>LSA Vector Search</span><span>RRF Fusion</span><span>Exact-span Citations</span></div>
+    </section>
+    <section class="workspace" aria-label="Retrieval experiment">
+      <div class="sectionbar"><div><span class="index">01</span><h2>Evidence explorer</h2></div><span class="tag">NO EXTERNAL MODEL REQUIRED</span></div>
+      <form id="ask-form">
+        <label for="question">YOUR QUESTION</label>
+        <textarea id="question" name="question" rows="3" maxlength="400" required placeholder="How does Northstar AI combine BM25 and vector search?"></textarea>
+        <div class="controls">
+          <div class="method">
+            <label for="method">RETRIEVAL METHOD</label>
+            <select id="method" name="method">
+              <option value="hybrid">Hybrid · BM25 + LSA + RRF</option>
+              <option value="bm25">Lexical baseline · BM25</option>
+              <option value="lsa">Vector baseline · LSA</option>
+            </select>
+          </div>
+          <button id="ask-button" type="submit">Inspect Evidence <span>↗</span></button>
+        </div>
+      </form>
+      <div class="samples"><span>TRY A QUESTION</span>
+        <button class="example" data-query="How are BM25 and vector search results combined?">Hybrid search</button>
+        <button class="example" data-query="What makes a citation quote valid?">Citations</button>
+        <button class="example" data-query="What is the cafeteria lunch menu?">Abstention</button>
+      </div>
+      <div id="result" class="result" aria-live="polite">
+        <div class="empty"><span class="glyph">◇</span><strong>Ready for a question.</strong><p>You'll see verifiable excerpts rather than an unsupported synthesized answer.</p></div>
+      </div>
+    </section>
+    <section class="notes"><div><span class="index">02</span><h2>What this proves</h2></div>
+      <div class="notegrid">
+        <article><span>01 / RETRIEVAL</span><h3>Measured baselines</h3><p>BM25 and LSA run independently; hybrid fusion is evaluated against both over the same eligible corpus.</p></article>
+        <article><span>02 / PROVENANCE</span><h3>Source before story</h3><p>Every citation resolves to an exact character range in a versioned fictional document.</p></article>
+        <article><span>03 / HONEST LIMITS</span><h3>Abstain by default</h3><p>No LLM silently invents prose. This is the retrieval and evidence layer, not an enterprise-ready generative service.</p></article>
+      </div>
+    </section>
+  </main>
+  <footer><span>PATHAN AFNAN KHAN / OPEN-SOURCE RAG RESEARCH</span><span>All content fictional · Local demo only</span></footer>
+</body>
+</html>

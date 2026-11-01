@@ -72,6 +72,18 @@ export default function Publications() {
           <p className="mb-12 max-w-3xl text-lg leading-relaxed text-dark/75 dark:text-light/75">
             A collection of technical essays and field notes authored by Pathan Afnan Khan, an AI Engineer and Data Scientist, focused on making intelligent systems useful and dependable.
           </p>
+          <article className="mb-10 rounded-3xl border border-dark/15 bg-dark/[0.04] p-8 dark:border-light/20 dark:bg-light/[0.05]">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] opacity-60">Featured original research · Open source</p>
+            <h2 className="mt-4 text-3xl font-bold">Grounded RAG Lab: evidence-first retrieval</h2>
+            <p className="mt-4 max-w-3xl leading-7 text-dark/70 dark:text-light/70">
+              A runnable, MIT-licensed research prototype with BM25, LSA vectors, hybrid fusion,
+              exact citations, permission tests and an honestly reported 12-question synthetic evaluation.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-5 text-sm font-semibold">
+              <Link href="/articles/grounded-rag-lab-evidence-first-retrieval" className="underline underline-offset-4">Read the case study ↗</Link>
+              <a href="https://github.com/PathanAfnanKhan020319/shama-portfoliov2/tree/main/open-source/grounded-rag-lab" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">Source & tests ↗</a>
+            </div>
+          </article>
           <div className="grid grid-cols-2 gap-6 md:grid-cols-1">
             {publications.map((publication) => (
               <a
