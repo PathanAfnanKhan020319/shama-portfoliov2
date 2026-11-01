@@ -1,5 +1,57 @@
 export const articleFieldNotes = [
   {
+    slug: "grounded-rag-lab-evidence-first-retrieval",
+    title: "Grounded RAG Lab: building an evidence-first retrieval system",
+    seoTitle: "Grounded RAG Lab Case Study | Pathan Afnan Khan",
+    summary:
+      "An original open-source case study comparing BM25, LSA vector retrieval and reciprocal-rank fusion with exact-span citations, access filtering and reproducible synthetic tests.",
+    excerpt:
+      "I built an inspectable RAG evidence layer: access-filtered retrieval, source-offset validation, cautious abstention and a tiny benchmark whose limitations are made explicit.",
+    keywords: ["RAG Evaluation", "Hybrid Retrieval", "BM25", "Latent Semantic Analysis", "Source Citations", "Open Source"],
+    datePublished: "2026-11-01",
+    repositoryUrl: "https://github.com/PathanAfnanKhan020319/shama-portfoliov2/tree/main/open-source/grounded-rag-lab",
+    technicalCaseStudyUrl: "https://github.com/PathanAfnanKhan020319/shama-portfoliov2/blob/main/open-source/grounded-rag-lab/docs/case-study.md",
+    relatedProjectSlugs: ["rag-semantic-search", "dash-2-enterprise-ai-assistant"],
+    sections: [
+      {
+        heading: "Why start with the evidence?",
+        paragraphs: [
+          "A citation-looking link can still point to a fabricated quote, an outdated document, or information a user should not see. I designed this prototype around those failure modes: authenticate the trusted scope, select eligible document versions, retrieve candidates and verify every displayed source span.",
+          "The corpus describes Northstar AI, an entirely fictional company. Its 17 JSONL records and 12 regression questions are synthetic, public and small enough for anyone to audit. The code runs locally without a paid LLM API.",
+        ],
+      },
+      {
+        heading: "Three retrieval modes, one explicit comparison",
+        paragraphs: [
+          "I implemented BM25 lexical ranking and a separate TF-IDF plus TruncatedSVD latent semantic analysis (LSA) vector baseline. LSA is not a neural embedding model. The hybrid mode applies reciprocal-rank fusion using 1/(60+rank) for each branch instead of mixing incomparable raw scores.",
+          "Tenant, group and valid-date filtering happens before retrieval and vector scoring; the local browser demo uses a fixed public scope. The unit tests cover cross-tenant denial, version selection and deterministic rank fusion.",
+        ],
+      },
+      {
+        heading: "Measured results, without inflated claims",
+        paragraphs: [
+          "I ran a local ablation with 17 fictional records and 12 hand-authored synthetic queries (9 answerable and 3 unanswerable). At k=3, BM25, LSA and hybrid each recorded Recall@3=1.00 and MRR@3=1.00 over the nine answerable questions, and zero forbidden document hits across the test queries.",
+          "Those perfect values indicate an easy regression fixture, not a production-grade retrieval system or a win for hybrid fusion. Three negative questions still retrieved unrelated candidate passages, and answer-level semantic entailment was not measured. The full source code, labels, tests and caveats are published for reproduction.",
+        ],
+      },
+      {
+        heading: "Exact source quotes and cautious abstention",
+        paragraphs: [
+          "Every chunk preserves character offsets into the original versioned text. The citation validator checks document identity, version, authorization, offset bounds and exact quote equality. The default answer is a set of verified excerpts rather than generated prose; when the excerpt heuristic has insufficient overlap, the system abstains.",
+          "Exact match validation proves quote integrity, not that a passage actually entails the answer. An optional local Ollama adapter only emits explicitly unverified drafts for human review. Its JSON and citation-ID checks have mocked tests; live model output was not benchmarked.",
+        ],
+      },
+      {
+        heading: "Tests, limits and next experiments",
+        paragraphs: [
+          "The code passed 11 automated tests for validation, ACLs, date windows, citation forgery, prompt-injection handling and mocked model responses. A local HTML evidence explorer makes each citation inspectable, with no external service dependency.",
+          "The next step is an independently labeled, held-out dataset with paraphrases, tough negatives, multilingual documents, neural embedding baselines and human-scored claim support. Only then could we honestly measure whether hybrid retrieval improves anything beyond a toy fixture.",
+        ],
+      },
+    ],
+  },
+
+  {
     slug: "production-rag-retrieval-quality",
     title: "Production RAG: retrieval quality matters more than model size",
     seoTitle: "Production RAG Retrieval Quality | Pathan Afnan Khan",

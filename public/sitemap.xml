@@ -77,6 +77,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://pathan-afnan-khan.vercel.app/articles/grounded-rag-lab-evidence-first-retrieval</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://pathan-afnan-khan.vercel.app/resume</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

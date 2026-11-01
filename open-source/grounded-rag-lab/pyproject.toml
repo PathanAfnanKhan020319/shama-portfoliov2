@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=70"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "grounded-rag-lab"
+version = "0.1.0"
+description = "Reproducible hybrid retrieval, provenance and citation evaluation with fictional documents"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "Pathan Afnan Khan"}]
+dependencies = ["numpy>=2.3,<2.4", "scikit-learn>=1.8,<1.9"]
+
+[project.scripts]
+grounded-rag = "grounded_rag.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+grounded_rag = ["web/*.html", "web/*.css", "web/*.js"]

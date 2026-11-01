@@ -26,6 +26,7 @@ export default function ArticlePage({ article, relatedProjects }) {
       },
     },
     keywords: article.keywords.join(", "),
+    ...(article.datePublished ? { datePublished: article.datePublished } : {}),
     image: {
       "@id": `${SITE}/#primaryimage`,
     },
@@ -108,6 +109,21 @@ export default function ArticlePage({ article, relatedProjects }) {
                 </section>
               ))}
             </div>
+
+            {article.repositoryUrl && (
+              <aside className="mt-14 rounded-3xl border border-dark/15 bg-dark/[0.04] p-8 dark:border-light/20 dark:bg-light/[0.05] sm:p-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] opacity-60">Reproducible open-source research</p>
+                <h2 className="mt-3 text-2xl font-bold">Read the code, data and real measurements</h2>
+                <p className="mt-4 text-base leading-7 opacity-75">
+                  This is a fictional evaluation fixture, not an enterprise benchmark or independent endorsement.
+                  Inspect the source, run the tests and review the complete limitations.
+                </p>
+                <div className="mt-6 flex flex-wrap gap-4 text-sm font-semibold">
+                  <a href={article.repositoryUrl} target="_blank" rel="noopener noreferrer" className="rounded-full bg-dark px-5 py-3 text-light dark:bg-light dark:text-dark">View source code ↗</a>
+                  <a href={article.technicalCaseStudyUrl} target="_blank" rel="noopener noreferrer" className="rounded-full border border-dark/20 px-5 py-3 dark:border-light/20">Full technical report ↗</a>
+                </div>
+              </aside>
+            )}
 
             {relatedProjects.length > 0 && (
               <aside className="mt-16 border-t border-dark/15 dark:border-light/15 pt-10">
