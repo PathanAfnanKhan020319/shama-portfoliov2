@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://afnan-mlops-fieldnotes.vercel.app/sitemap.xml
