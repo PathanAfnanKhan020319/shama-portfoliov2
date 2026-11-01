@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://afnan-agentic-systems.vercel.app/sitemap.xml

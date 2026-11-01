@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://afnan-ai-engineering.vercel.app/sitemap.xml
